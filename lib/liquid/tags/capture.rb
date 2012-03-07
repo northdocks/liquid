@@ -14,7 +14,7 @@ module Liquid
   class Capture < Block
     Syntax = /(\w+)/
 
-    def initialize(tag_name, markup, tokens)
+    def initialize(context, tag_name, markup, tokens)
       if markup =~ Syntax
         @to = $1
       else

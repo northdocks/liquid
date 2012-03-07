@@ -1,6 +1,6 @@
 module Liquid
   class Raw < Block
-    def parse(tokens)
+    def parse(context, tokens)
       @nodelist ||= []
       @nodelist.clear
 

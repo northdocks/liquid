@@ -16,7 +16,7 @@ module Liquid
     Syntax = /(#{QuotedFragment})\s*([=!<>a-z_]+)?\s*(#{QuotedFragment})?/
     ExpressionsAndOperators = /(?:\b(?:\s?and\s?|\s?or\s?)\b|(?:\s*(?!\b(?:\s?and\s?|\s?or\s?)\b)(?:#{QuotedFragment}|\S+)\s*)+)/
 
-    def initialize(tag_name, markup, tokens)
+    def initialize(context, tag_name, markup, tokens)
       @blocks = []
 
       push_block('if', markup)

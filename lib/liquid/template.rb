@@ -55,7 +55,8 @@ module Liquid
     # Parse source code.
     # Returns self for easy chaining
     def parse(source)
-      @root = Document.new(tokenize(source))
+      @context = {}
+      @root = Document.new(@context, tokenize(source))
       self
     end
 
@@ -88,7 +89,7 @@ module Liquid
     #
     def render(*args)
       return '' if @root.nil?
-      
+
       context = case args.first
       when Liquid::Context
         args.shift

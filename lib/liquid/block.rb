@@ -6,7 +6,7 @@ module Liquid
     FullToken         = /^#{TagStart}\s*(\w+)\s*(.*)?#{TagEnd}$/
     ContentOfVariable = /^#{VariableStart}(.*)#{VariableEnd}$/
 
-    def parse(tokens)
+    def parse(context, tokens)
       @nodelist ||= []
       @nodelist.clear
 
@@ -25,7 +25,7 @@ module Liquid
 
             # fetch the tag from registered blocks
             if tag = Template.tags[$1]
-              @nodelist << tag.new($1, $2, tokens)
+              @nodelist << tag.new(context, $1, $2, tokens)
             else
               # this tag is not registered with the system
               # pass it to the current block for special handling or error reporting

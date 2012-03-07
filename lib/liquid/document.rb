@@ -1,8 +1,8 @@
 module Liquid
   class Document < Block
     # we don't need markup to open this block
-    def initialize(tokens)
-      parse(tokens)
+    def initialize(context, tokens)
+      parse(context, tokens)
     end
 
     # There isn't a real delimter

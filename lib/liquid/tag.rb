@@ -4,13 +4,13 @@ module Liquid
 
     attr_accessor :nodelist
 
-    def initialize(tag_name, markup, tokens)
+    def initialize(context, tag_name, markup, tokens)
       @tag_name   = tag_name
       @markup     = markup
-      parse(tokens)
+      parse(context, tokens)
     end
 
-    def parse(tokens)
+    def parse(context, tokens)
     end
 
     def name
