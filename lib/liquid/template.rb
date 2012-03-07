@@ -15,6 +15,7 @@ module Liquid
   #
   class Template
     attr_accessor :root
+    attr_accessor :parser_context
     @@file_system = BlankFileSystem.new
 
     class << self
@@ -55,8 +56,8 @@ module Liquid
     # Parse source code.
     # Returns self for easy chaining
     def parse(source)
-      @context = {}
-      @root = Document.new(@context, tokenize(source))
+      @parser_context ||= {}
+      @root = Document.new(@parser_context, tokenize(source))
       self
     end
 
